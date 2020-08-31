@@ -1,0 +1,11 @@
+[Unit]
+Description=Container Status
+
+[Service]
+Restart=always
+User=root
+WorkingDirectory=/home/mohammad/Projects/container_status
+ExecStart=/usr/bin/python3 /home/mohammad/Projects/container_status/api.py 
+
+[Install]
+WantedBy=multi-user.target
