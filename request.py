@@ -8,14 +8,8 @@ def send_request_to_api(container_name):
     data = '"{\\"EVENT_NAME\\": \\"UPDATE_SERVICES\\", \\"EVENT_BODY\\":{\\"CONTAINER_NAME\\": \\"postgres\\"}}"'
     print(data)
     data_json = myjson.dumps(data, default=myjson._default_decoder)
-    cmd = 'curl --location -w %{http_code} --request POST "http://192.168.7.203:5002/routaa/api/secure/ui/log/public/save-data" ' \
-              '--header "Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIwOTEyNDg1NTA0MyIsImlhdCI6MTU4ODEwMjMyMiwiZXhwIjoxNjE5NjM4MzIyfQ.ePrAixMU9Fu4HoNr3TCoiJMKMpRpLFkYvLCpa3Pnt1dn9ZenKaSKGokOv-GB9n9-yujHQ-M_RAEgtDBJ0v5V3w" --header "Content-Type: application/json" -d '+ data_json +' '''
-    
-    # cmd = 'curl --location -w %{http_code} --request POST "http://192.168.77.82:5002/routaa/api/secure/ui/log/public/save-data" ' \
-    #       '--header "os: infra" --header "Authorization: Bearer ' \
-    #       'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIwOTEyNDg1NTA0MyIsImlhdCI6MTU4ODEwMjMyMiwiZXhwIjoxNjE5NjM4MzIyfQ' \
-    #       '.ePrAixMU9Fu4HoNr3TCoiJMKMpRpLFkYvLCpa3Pnt1dn9ZenKaSKGokOv-GB9n9-yujHQ-M_RAEgtDBJ0v5V3w" --header ' \
-    #       '"Content-Type: application/json" -d "{\"EVENT_NAME\":\"UPDATE_SERVICES\",\"EVENT_BODY\":{\"CONTAINER_NAME\":\"' + container_name + '"}}"'''
+    cmd = 'curl --location -w %{http_code} --request POST "http://your-api" ' \
+              '--header "Authorization: your-api-token " --header "Content-Type: application/json" -d '+ data_json +' '''
 
     # print(cmd)
     subprocess.call(cmd, shell=True)
